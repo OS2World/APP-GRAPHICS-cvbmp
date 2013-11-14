@@ -1,0 +1,21 @@
+# Dependency declarations by file types:
+
+CO=-c -AL -Ox -Zp -FPa -W3
+LO=
+#CO=-c -AL -Od -Zpi -FPa -W3
+#LO=/CO
+
+.C.OBJ:
+     cl $(CO) $*.C > $*.ERR
+     more <$*.ERR
+
+.OBJ.EXE:
+     link4 $(LO) @$*.LNK > $*.ERL
+     more <$*.ERL
+
+# Dependency execution:
+
+CVBMP.OBJ:     CVBMP.C
+
+CVBMP.EXE:     CVBMP.OBJ \
+               CVBMP.LNK
